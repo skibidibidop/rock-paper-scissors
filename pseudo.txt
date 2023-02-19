@@ -1,0 +1,59 @@
+Specific function and variable names according to the assignment:
+
+    computerSelection
+    playerSelection
+    getComputerChoice(): returns rock, paper, or scissors randomly
+    playRound(): compares computerSelection and playerSelection
+    game(): main loop, ends if computerScore || playerScore === 5
+
+//////////////////////////////////////////////////////////////////////////////
+
+while (computerScore || playerScore < 5)
+
+Get computer choice
+    Generate random number (1-3), then define computerSelection:
+    
+    if 1, let computerSelection = 'rock'
+    else if 2, let computerSelection = 'paper'
+    else, let computerSelection = 'scissors'
+
+Get player choice through prompt, and then store in playerInput
+Convert playerInput toLowerCase(), then store in playerSelection
+
+    if playerSelection !=== 'rock' || 'paper' || 'scissors'
+    re-do prompt for player input
+
+Compare computerSelection and playerSelection
+
+    if computerSelection === playerSelection:
+        console.log('Tie!')
+        continue
+
+    if computerSelection === 'rock'
+        if playerSelection === 'paper'
+            console.log('You win! Paper beats Rock.')
+            playerScore++
+        else
+            console.log('You lose! Rock beats Scissors.')
+            computerScore++
+    else if computerSelection === 'paper'
+        if playerSelection === 'rock'
+            console.log('You lose! Paper beats Rock.')
+            computerScore++
+        else if playerSelection === 'scissors'
+            console.log('You win! Scissors beats Paper.')
+            playerScore++
+    else // compChoice will be scissors
+        if playerSelection === 'rock'
+            console.log('You win! Rock beats Scissors.')
+            playerScore++
+        else
+            console.log('You lose! Scissors beats Paper.')
+            computerScore++
+
+If computerScore === 5
+    console.log('You lose!')
+else if playerScore === 5
+    console.log('You win!')
+
+Repeat loop

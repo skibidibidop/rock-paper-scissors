@@ -13,14 +13,19 @@ let playerScore = 0;
     let randomNumber = getComputerChoice(1, 4);
     let computerSelection = assignComputerSelection(randomNumber);
 
-    // Convert all the characters of player input to lower case 
+    let buttons = document.querySelectorAll('button');
+    
+    let roundResult = buttons.forEach(function(button)
+    {
+        button.addEventListener('click', function(btn)
+        {
+            let choice = btn.target.getAttribute('id');
 
-    let playerInput = prompt('Rock, paper, or scissors?', '');
-    let playerSelection = playerInput.toLowerCase();
+            playRound(computerSelection, choice);
+        });
+    });
 
     // Compare computerSelection and playerSelection
-
-    let roundResult = playRound(computerSelection, playerSelection);
 
     if (roundResult === 8)
     {
@@ -47,7 +52,11 @@ function getComputerChoice(min, max)
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function assignComputerSelection(computerNumber) // computerNumber will come from the random number generator
+function assignComputerSelection(computerNumber)
+    /*
+    computerNumber will come from the
+    random number generator
+    */
 {
     if (computerNumber === 1)
     {
@@ -66,7 +75,8 @@ function assignComputerSelection(computerNumber) // computerNumber will come fro
 function playRound(compChoice, playerChoice)
 {
     /*
-    Return 7 for tie. Arbitrary starting number, I just wanted to stay away from 1 and 0.
+    Return 7 for tie. Arbitrary starting number, I just
+    wanted to stay away from 1 and 0.
     Return 8 for player score
     Return 9 for computer score
     */

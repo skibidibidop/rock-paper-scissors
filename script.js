@@ -4,43 +4,48 @@
 
 let computerScore = 0;
 let playerScore = 0;
+let buttons = document.querySelectorAll('button');
 
-    /*  
-    Generate random number between 1 to 3, then assign rock, paper, or scissors to computerSelection depending
-    on the result
-    */
+/*  
+Generate random number between 1 to 3, then assign rock, paper,
+or scissors to computerSelection depending on the result
+*/
 
-    let randomNumber = getComputerChoice(1, 4);
-    let computerSelection = assignComputerSelection(randomNumber);
+let randomNumber = getComputerChoice(1, 4);
+let computerSelection = assignComputerSelection(randomNumber);
+let roundResult = 0;
+let choice = '';
 
-    let buttons = document.querySelectorAll('button');
-    
-    let roundResult = buttons.forEach(function(button)
+/* Something wrong with this block
+buttons.forEach(function(button)
+{
+    button.addEventListener('click', function(btn)
     {
-        button.addEventListener('click', function(btn)
+
+        while (playerScore < 5 || computerScore < 5)
         {
-            let choice = btn.target.getAttribute('id');
+            choice = btn.target.getAttribute('id');
 
-            playRound(computerSelection, choice);
-        });
+            roundResult = playRound(computerSelection, choice);
+
+            if (roundResult === 8)
+            {
+                playerScore++;
+            }
+            else if (roundResult === 9)
+            {
+                computerScore++;
+            }
+        }    
     });
+});
+*/
 
-    // Compare computerSelection and playerSelection
-
-    if (roundResult === 8)
-    {
-        playerScore++;
-    }
-    else if (roundResult === 9)
-    {
-        computerScore++;
-    }
-
-if (computerScore === 1)
+if (computerScore === 5)
 {
     console.log('You lose!');
 }
-else if (playerScore === 1)
+else if (playerScore === 5)
 {
     console.log('You win!');
 }

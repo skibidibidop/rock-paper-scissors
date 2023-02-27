@@ -1,5 +1,47 @@
 'use strict';
 
+// Main program flow below
+
+let computerScore = 0;
+let playerScore = 0;
+
+    /*  
+    Generate random number between 1 to 3, then assign rock, paper, or scissors to computerSelection depending
+    on the result
+    */
+
+    let randomNumber = getComputerChoice(1, 4);
+    let computerSelection = assignComputerSelection(randomNumber);
+
+    // Convert all the characters of player input to lower case 
+
+    let playerInput = prompt('Rock, paper, or scissors?', '');
+    let playerSelection = playerInput.toLowerCase();
+
+    // Compare computerSelection and playerSelection
+
+    let roundResult = playRound(computerSelection, playerSelection);
+
+    if (roundResult === 8)
+    {
+        playerScore++;
+    }
+    else if (roundResult === 9)
+    {
+        computerScore++;
+    }
+
+if (computerScore === 1)
+{
+    console.log('You lose!');
+}
+else if (playerScore === 1)
+{
+    console.log('You win!');
+}
+
+// Function declarations here
+
 function getComputerChoice(min, max)
 {
     return Math.floor(Math.random() * (max - min) + min);
@@ -73,47 +115,4 @@ function playRound(compChoice, playerChoice)
             return 9;
         }
     }
-}
-
-// Main program flow below
-
-let computerScore = 0;
-let playerScore = 0;
-
-while (computerScore < 5 || playerScore < 5)
-{
-    /*  
-    Generate random number between 1 to 3, then assign rock, paper, or scissors to computerSelection depending
-    on the result
-    */
-
-    let randomNumber = getComputerChoice(1, 4);
-    let computerSelection = assignComputerSelection(randomNumber);
-
-    // Convert all the characters of player input to lower case 
-
-    let playerInput = prompt('Rock, paper, or scissors?', '');
-    let playerSelection = playerInput.toLowerCase();
-
-    // Compare computerSelection and playerSelection
-
-    let roundResult = playRound(computerSelection, playerSelection);
-
-    if (roundResult === 8)
-    {
-        playerScore++;
-    }
-    else if (roundResult === 9)
-    {
-        computerScore++;
-    }
-}
-
-if (computerScore === 5)
-{
-    console.log('You lose!');
-}
-else
-{
-    console.log('You win!');
 }

@@ -13,17 +13,19 @@ let choice = '';
 
 const playerChoice = document.querySelector('.player-choice');
 const compChoice = document.querySelector('.comp-choice');
+const roundWin = document.querySelector('.round-result');
 
-const myPara = document.createElement('p');
+const playerPara = document.createElement('p');
 const compPara = document.createElement('p');
+const roundPara = document.createElement('p');
 
 buttons.forEach(function(button)
 {
     button.addEventListener('click', function(btn)
     {
         choice = btn.target.getAttribute('id');
-        playerChoice.appendChild(myPara);
-        myPara.textContent = `${choice.toUpperCase()}`;
+        playerChoice.appendChild(playerPara);
+        playerPara.textContent = `${choice.toUpperCase()}`;
 
         randomNumber = getComputerChoice(1, 4);
         computerSelection = assignComputerSelection(randomNumber);
@@ -31,15 +33,24 @@ buttons.forEach(function(button)
         compPara.textContent = `${computerSelection.toUpperCase()}`;
 
         roundResult = playRound(computerSelection, choice);
-        // Add div for player choice display
 
         if (roundResult === 8)
         {
             playerScore++;
+            roundWin.appendChild(roundPara);
+            roundPara.textContent = 'You win!';
+    
         }
         else if (roundResult === 9)
         {
             computerScore++;
+            roundWin.appendChild(roundPara);
+            roundPara.textContent = 'You Lose!';
+        }
+        else
+        {
+            roundWin.appendChild(roundPara);
+            roundPara.textContent = 'Tie!';
         }
 
         if (computerScore === 5)
@@ -93,7 +104,6 @@ function playRound(compChoice, playerChoice)
     */
     if (compChoice === playerChoice)
     {
-        console.log('Tie!');
         return 7; 
     }
 
@@ -101,12 +111,10 @@ function playRound(compChoice, playerChoice)
     {
         if (playerChoice === 'paper')
         {
-            console.log('You win! Paper beats Rock.');
             return 8;
         }
         else if (playerChoice === 'scissors')
         {
-            console.log('You lose! Rock beats Scissors');
             return 9;
         }
     }
@@ -114,12 +122,10 @@ function playRound(compChoice, playerChoice)
     {
         if (playerChoice === 'rock')
         {
-            console.log('You lose! Paper beats Rock.');
             return 9;
         }
         else if (playerChoice === 'scissors')
         {
-            console.log('You win! Scissors beats Paper.');
             return 8;
         }
     }
@@ -127,12 +133,10 @@ function playRound(compChoice, playerChoice)
     {
         if (playerChoice === 'rock')
         {
-            console.log('You win! Rock beats Scissors.');
             return 8;
         }
         else if (playerChoice === 'paper')
         {
-            console.log('You lose! Rock beats Scissors.');
             return 9;
         }
     }

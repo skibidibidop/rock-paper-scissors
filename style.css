@@ -16,11 +16,13 @@
     margin: auto;
     margin-bottom: 30px;
     width: 1000px;
+    height: 85px;
     border: 2px solid black;
 }
 
 .scores {
     margin: auto;
-    width: 1500px;
+    width: 1200px;
+    height: 85px;
     border: 2px solid black;
 }

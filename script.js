@@ -1,54 +1,46 @@
 'use strict';
 
-// Main program flow below
+// Main program flow
 
 let computerScore = 0;
 let playerScore = 0;
 let buttons = document.querySelectorAll('button');
 
-/*  
-Generate random number between 1 to 3, then assign rock, paper,
-or scissors to computerSelection depending on the result
-*/
-
-let randomNumber = getComputerChoice(1, 4);
-let computerSelection = assignComputerSelection(randomNumber);
+let randomNumber = 0;
+let computerSelection = '';
 let roundResult = 0;
 let choice = '';
 
-/* Something wrong with this block
 buttons.forEach(function(button)
 {
     button.addEventListener('click', function(btn)
     {
+        choice = btn.target.getAttribute('id');
 
-        while (playerScore < 5 || computerScore < 5)
+        randomNumber = getComputerChoice(1, 4);
+        computerSelection = assignComputerSelection(randomNumber);
+
+        roundResult = playRound(computerSelection, choice);
+
+        if (roundResult === 8)
         {
-            choice = btn.target.getAttribute('id');
+            playerScore++;
+        }
+        else if (roundResult === 9)
+        {
+            computerScore++;
+        }
 
-            roundResult = playRound(computerSelection, choice);
-
-            if (roundResult === 8)
-            {
-                playerScore++;
-            }
-            else if (roundResult === 9)
-            {
-                computerScore++;
-            }
-        }    
+        if (computerScore === 5)
+        {
+            console.log('You lose!');
+        }
+        else if (playerScore === 5)
+        {
+            console.log('You win!');
+        }
     });
 });
-*/
-
-if (computerScore === 5)
-{
-    console.log('You lose!');
-}
-else if (playerScore === 5)
-{
-    console.log('You win!');
-}
 
 // Function declarations here
 

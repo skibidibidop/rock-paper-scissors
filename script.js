@@ -1,5 +1,4 @@
 'use strict';
-
 // Main program flow
 
 let computerScore = 0;
@@ -14,15 +13,21 @@ let choice = '';
 const playerChoice = document.querySelector('.player-choice');
 const compChoice = document.querySelector('.comp-choice');
 const roundWin = document.querySelector('.round-result');
-
+const playerScoreDiv = document.querySelector('.player-score');
+const compScoreDiv = document.querySelector('.comp-score');
+const victorDiv = document.querySelector('.victor-announce');
 const playerPara = document.createElement('p');
 const compPara = document.createElement('p');
 const roundPara = document.createElement('p');
+const playerScorePara = document.createElement('p');
+const compScorePara = document.createElement('p');
 
 buttons.forEach(function(button)
 {
     button.addEventListener('click', function(btn)
     {
+        victorDiv.textContent = '';
+
         choice = btn.target.getAttribute('id');
         playerChoice.appendChild(playerPara);
         playerPara.textContent = `${choice.toUpperCase()}`;
@@ -39,7 +44,6 @@ buttons.forEach(function(button)
             playerScore++;
             roundWin.appendChild(roundPara);
             roundPara.textContent = 'You win!';
-    
         }
         else if (roundResult === 9)
         {
@@ -53,17 +57,24 @@ buttons.forEach(function(button)
             roundPara.textContent = 'Tie!';
         }
 
+        playerScoreDiv.appendChild(playerScorePara);            
+        compScoreDiv.appendChild(compScorePara);
+        playerScorePara.textContent = `${playerScore}`;
+        compScorePara.textContent = `${computerScore}`;
+
         if (computerScore === 5)
         {
-            // Add div
-
+            victorDiv.textContent = 'The computer wins!';
+            computerScore = 0;
+            playerScore = 0;
         }
-
+    
         if (playerScore === 5)
         {
-            // Add div
-
-        }
+            victorDiv.textContent = 'You win!';
+            computerScore = 0;
+            playerScore = 0;
+        }            
     });
 });
 

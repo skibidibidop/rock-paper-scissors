@@ -22,7 +22,17 @@
 
 .scores {
     margin: auto;
+    margin-bottom: 30px;
     width: 1200px;
     height: 85px;
     border: 2px solid black;
+}
+
+.victor-announce {
+    margin: auto;
+    text-align: center;
+    width: 1200px;
+    height: 80px;
+    font-size: 30px;
+    font-weight: bold;
 }

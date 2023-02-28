@@ -19,8 +19,10 @@ buttons.forEach(function(button)
 
         randomNumber = getComputerChoice(1, 4);
         computerSelection = assignComputerSelection(randomNumber);
+        // Add div for computer choice display
 
         roundResult = playRound(computerSelection, choice);
+        // Add div for player choice display
 
         if (roundResult === 8)
         {
@@ -33,11 +35,14 @@ buttons.forEach(function(button)
 
         if (computerScore === 5)
         {
-            console.log('You lose!');
+            // Add div
+
         }
-        else if (playerScore === 5)
+
+        if (playerScore === 5)
         {
-            console.log('You win!');
+            // Add div
+
         }
     });
 });

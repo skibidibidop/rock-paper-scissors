@@ -11,15 +11,24 @@ let computerSelection = '';
 let roundResult = 0;
 let choice = '';
 
+const playerChoice = document.querySelector('.player-choice');
+const compChoice = document.querySelector('.comp-choice');
+
+const myPara = document.createElement('p');
+const compPara = document.createElement('p');
+
 buttons.forEach(function(button)
 {
     button.addEventListener('click', function(btn)
     {
         choice = btn.target.getAttribute('id');
+        playerChoice.appendChild(myPara);
+        myPara.textContent = `${choice.toUpperCase()}`;
 
         randomNumber = getComputerChoice(1, 4);
         computerSelection = assignComputerSelection(randomNumber);
-        // Add div for computer choice display
+        compChoice.appendChild(compPara);
+        compPara.textContent = `${computerSelection.toUpperCase()}`;
 
         roundResult = playRound(computerSelection, choice);
         // Add div for player choice display

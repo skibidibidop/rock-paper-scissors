@@ -1,0 +1,26 @@
+.buttons,
+.choices,
+.scores {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.buttons {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.choices {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 1000px;
+    border: 2px solid black;
+}
+
+.scores {
+    margin: auto;
+    width: 1500px;
+    border: 2px solid black;
+}
